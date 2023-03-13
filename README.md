@@ -1,6 +1,6 @@
 # conflupy
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/yoobato/confluencepy/publish-to-pypi.yml)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/yoobato/conflupy/publish-to-pypi.yml)
 ![PyPI](https://img.shields.io/pypi/v/conflupy)
 
 A Python library for Atlassian Confluence REST API
