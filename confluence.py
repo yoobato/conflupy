@@ -147,7 +147,7 @@ class Confluence:
                 }
             }
         }
-        return self._session.post(
+        return self._session.put(
             f'{self._api_base_url}/content/{page_content_id}',
             json=req_data,
             verify=False,
