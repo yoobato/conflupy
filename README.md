@@ -35,7 +35,7 @@ print('Page :', page)
 
 # Create a new Page
 body = '<h1>Hello</h1><br /><p>This is a page created with REST API</p>'
-new_page = create_page(space_key='TEST', title='Test Page', body=body)
+new_page = confluence.create_page(space_key='TEST', title='Test Page', body=body)
 print('New Page :', new_page)
 ```
 
