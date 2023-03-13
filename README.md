@@ -1,7 +1,7 @@
 # confluencepy
 
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/yoobato/confluencepy/publish-to-pypi.yml)
-![PyPI](https://img.shields.io/pypi/v/confluencepy)
+![PyPI](https://img.shields.io/pypi/v/conflupy)
 
 A Python library for Atlassian Confluence REST API
 
@@ -14,7 +14,7 @@ A Python library for Atlassian Confluence REST API
 
 ## Installation
 ```sh
-pip install confluencepy
+pip install conflupy
 ```
 
 ## Usage
@@ -49,7 +49,7 @@ python -m build
 pip install twine
 python -m twine upload dist/*
 # package will be uploaded to PyPi registry
-# https://pypi.org/project/confluencepy
+# https://pypi.org/project/conflupy
 ```
 > However, this project use GitHub Actions workflow to automatically publish the package to PyPI when a tag pushed.
 
