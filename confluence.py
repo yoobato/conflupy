@@ -56,3 +56,18 @@ class Confluence:
 
         return results
 
+
+    def get_content(self, content_id: str) -> dict:
+        '''Get a Confluence content bt the given Content ID
+
+        Args:
+            content_id (str): Content's ID to fetch
+        
+        Returns:
+            dict: Content
+        '''
+
+        return self._session.get(
+            f'{self._api_base_url}/content/{content_id}',
+            timeout=REQUEST_TIMEOUT_IN_SECS).json()
+
