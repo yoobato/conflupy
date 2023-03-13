@@ -71,3 +71,42 @@ class Confluence:
             f'{self._api_base_url}/content/{content_id}',
             timeout=REQUEST_TIMEOUT_IN_SECS).json()
 
+
+    def create_page(self,
+                    space_key: str,
+                    title: str,
+                    body: str,
+                    parent_page_id: str = None) -> dict:
+        '''Create a new Confluence page
+
+        Args:
+            space_key (str): Space's key where page will be created
+            title (str): Page title (must UNIQUE in a space)
+            body (str): Storage Formatted Body
+            parent_page_id (str): (Optional) Parent page's ID
+                                  (new page will be child of the parent page)
+        
+        Returns:
+            dict: Newly created content
+        '''
+
+        req_data = {
+            'space': { 'key': space_key },
+            'type': 'page',
+            'title': title,
+            'body': {
+                'storage': {
+                    'value': body,
+                    'representation': 'storage'
+                }
+            }
+        }
+        if parent_page_id:
+            req_data['ancestors'] = []
+            req_data['ancestors'].append({ 'id': parent_page_id })
+
+        return self._session.post(
+            f'{self._api_base_url}/content',
+            json=req_data,
+            timeout=REQUEST_TIMEOUT_IN_SECS).json()
+
