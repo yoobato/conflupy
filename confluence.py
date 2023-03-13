@@ -1,4 +1,7 @@
 import requests
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 REQUEST_TIMEOUT_IN_SECS = 10
 
@@ -44,8 +47,9 @@ class Confluence:
             }
 
             response = self._session.get(
-                f'{self._api_base_url}/content', 
-                params=params, 
+                f'{self._api_base_url}/content',
+                params=params,
+                verify=False,
                 timeout=REQUEST_TIMEOUT_IN_SECS).json()
             if response['size'] == 0:
                 break
@@ -69,6 +73,7 @@ class Confluence:
 
         return self._session.get(
             f'{self._api_base_url}/content/{content_id}',
+            verify=False,
             timeout=REQUEST_TIMEOUT_IN_SECS).json()
 
 
@@ -108,6 +113,7 @@ class Confluence:
         return self._session.post(
             f'{self._api_base_url}/content',
             json=req_data,
+            verify=False,
             timeout=REQUEST_TIMEOUT_IN_SECS).json()
 
 
@@ -144,4 +150,5 @@ class Confluence:
         return self._session.post(
             f'{self._api_base_url}/content/{page_content_id}',
             json=req_data,
+            verify=False,
             timeout=REQUEST_TIMEOUT_IN_SECS).json()
