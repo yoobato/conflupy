@@ -4,7 +4,7 @@
 ![PyPI](https://img.shields.io/pypi/v/conflupy)
 
 A Python library for Atlassian Confluence REST API
-> Version 1.0.0, 1.1.0 is for distribution test and has bugs. Please use conflupy >= 1.2.0
+> Version with 1.0.x ~ 1.2.x are for distribution tests and have bugs. Please use conflupy >= 1.3.0
 
 ## Requirements
 - Python >= 3.9
