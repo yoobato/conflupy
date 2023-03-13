@@ -1,4 +1,4 @@
-# OSS Notice | confluencepy #
+# OSS Notice | conflupy #
 
 This application is Copyright © yoobato. All rights reserved.
 
