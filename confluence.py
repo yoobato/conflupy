@@ -110,3 +110,38 @@ class Confluence:
             json=req_data,
             timeout=REQUEST_TIMEOUT_IN_SECS).json()
 
+
+    def update_page(self, page_content_id: str, new_body: str, new_title: str = None) -> dict:
+        '''Update a page content only by the given page id
+
+        Args:
+            page_content_id (str): Page to update
+            new_body (str): New Storage Formatterd Body
+            new_title (str): (Optional) New title (to keep the original title, then pass None)
+        
+        Returns:
+            dict: Updated content
+        '''
+
+        ori_content = self.get_content(content_id=page_content_id)
+
+        title = title if new_title else ori_content['title']
+        ori_version = int(ori_content['version']['number'])
+
+        req_data = {
+            'type': 'page',
+            'title': title,
+            'version': {
+                'number': ori_version + 1
+            },
+            'body': {
+                'storage': {
+                    'value': new_body,
+                    'representation': 'storage'
+                }
+            }
+        }
+        return self._session.post(
+            f'{self._api_base_url}/content/{page_content_id}',
+            json=req_data,
+            timeout=REQUEST_TIMEOUT_IN_SECS).json()
